@@ -1,0 +1,90 @@
+abstract class Person
+{
+	protected String  name;
+	protected String email;
+	public Person(String name,String email)
+	{
+		this.name=name;
+		this.email=email;
+	}
+	public void print() {
+		System.out.println(name);
+		System.out.println(email);
+	}
+	public final String getemail()
+	{
+	return this.email;
+	}
+	public abstract void occupation() ;
+	}
+
+class Student extends Person {
+	protected String course;
+	public Student(String name,String email,String course) {
+		super(name,email);
+		this.course=course;
+	}
+	public void print() {
+		super.print();
+		System.out.println(this.course);
+	}
+	
+	@Override
+	public void occupation() {
+		System.out.println("occupation of "+this.name+" is student");
+		// TODO Auto-generated method stub
+		
+	}
+}
+class Faculty extends Person {
+	protected String subject;
+	public Faculty(String name,String email,String subject) {
+		super(name,email);
+		this.subject=subject;
+	}
+	public void print() {
+		super.print();
+		System.out.println(this.subject);
+	}
+	
+	@Override
+	public void occupation() {
+		System.out.println("occupation of "+this.name+" is Faculty");
+		// TODO Auto-generated method stub
+		
+	}
+}
+class Foreign extends Student {
+	protected String country;
+	public Foreign(String name,String email,String course,String country) {
+		super(name,email,course);
+		this.country=country;
+	}
+	public void print() {
+		super.print();
+		System.out.println(this.country);
+	}
+	
+	@Override
+	public void occupation() {
+		System.out.println("occupation of "+this.name+" is student from "+ this.country);
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+public class TestPerson {
+
+	public static void main(String[] args) {
+ Person p;
+		 
+		 p = new Faculty("Dr. Bean","bean@gmail.com","Python");             // upcasting
+		 p.print();    // Runtime polymorphism
+	 p.occupation(); // Runtime polymorphism
+		 
+		 p = new Foreign("David","david@gmail.com","Java","Kenya");  // upcasting
+		 p.print();   // Runtime polymorphism
+		 p.occupation();
+
+	}
+}
